@@ -1,5 +1,5 @@
 section .data
-
+FILE_DESCRIPTOR EQU 1
 SYS_EXIT EQU 1
 SYS_WRITE EQU 4
 msg db 'Hello world', 0xa ; String to be edited
@@ -14,7 +14,7 @@ section .text
 
     mov edx, len ; Move message length to register edx
     mov ecx, msg ; Move message to register ecx
-    mov ebx, SYS_EXIT  ; File descriptor(stdout)
+    mov ebx, FILE_DESCRIPTOR  ; File descriptor(stdout)
     mov eax, SYS_WRITE   ; System call (system write)
     int 0x80     ; Kernel call
 

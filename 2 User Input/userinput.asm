@@ -1,5 +1,6 @@
 section .data
 
+  FILE_DESCRIPTOR EQU 1
   SYS_EXIT EQU 1
   SYS_READ EQU 3
   SYS_WRITE EQU 4
@@ -16,7 +17,7 @@ section .text
   _start:
 
   mov eax, SYS_WRITE
-  mov ebx, SYS_EXIT
+  mov ebx, FILE_DESCRIPTOR
   mov ecx, PROMPT
   mov edx, 19
   int 0x80
@@ -28,7 +29,7 @@ section .text
   int 0x80
 
   mov eax, SYS_WRITE
-  mov ebx, SYS_EXIT
+  mov ebx, FILE_DESCRIPTOR
   mov ecx, myName
   int 0x80
 

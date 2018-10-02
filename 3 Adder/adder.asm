@@ -1,4 +1,5 @@
 section .data
+  FILE_DESCRIPTOR EQU 1
   SYS_EXIT EQU 1
   SYS_READ EQU 3
   SYS_WRITE EQU 4
@@ -23,7 +24,7 @@ section .text
   int 0x80
 
   mov eax, SYS_READ
-  mov ebx, SYS_EXIT
+  mov ebx, FILE_DESCRIPTOR
   mov ecx, num1
   mov edx, 10
   int 0x80
@@ -35,7 +36,7 @@ section .text
   int 0x80
 
   mov eax, SYS_READ
-  mov ebx, SYS_EXIT
+  mov ebx, FILE_DESCRIPTOR
   mov ecx, num2
   mov edx, 10
   int 0x80
@@ -52,7 +53,7 @@ section .text
   mov [sum], eax
   
   mov eax, SYS_WRITE
-  mov ebx, SYS_EXIT
+  mov ebx, FILE_DESCRIPTOR
   mov ecx, sum
   mov edx, 10
   int 0x80
