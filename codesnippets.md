@@ -204,35 +204,3 @@ An example of a `for loop`. One never goes wrong with a for loop
     int 0x80
 
 ```
-
-## Cat 1 QST 2 (Slight error in printing Ball correctly)
-
-```
-  %macro printer 0
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg
-    mov edx, len
-    int 0x80
-  %endmacro
-
-  %macro switch 2
-    mov ecx, %1         ; Move the value to be raplaced into ecx
-    mov [msg+%2], ecx   ; Replace value at the index [msg+0] == [msg], [msg+1] -> at second place
-  %endmacro
-
-  section .data
-    msg db "Base Ball"
-    len equ $ - msg
-
-  section .text
-    global _start
-    _start:
-    
-    switch 'H', 0
-    switch 'a', 1
-    switch 'n', 2
-    switch 'd', 3
-    
-    printer
-```
